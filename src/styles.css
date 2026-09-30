@@ -1,1 +1,141 @@
-QGltcG9ydCAidGFpbHdpbmRjc3MiIHNvdXJjZShub25lKTsKQHNvdXJjZSAiLi4vc3JjIjsKQGltcG9ydCAidHctYW5pbWF0ZS1jc3MiOwoKQGN1c3RvbS12YXJpYW50IGRhcmsgKCY6aXMoLmRhcmsgKikpOwoKLyoKICogQWVnZWFuIFBvc3RjYXJkIGRlc2lnbiBzeXN0ZW0uCiAqIFN1bi13YXNoZWQgQ3ljbGFkaWMgd2hpdGVzLCBkZWVwIEFlZ2VhbiBibHVlLCB0ZXJyYWNvdHRhIGFuZCBvbGl2ZSBhY2NlbnRzLgogKiBEaXNwbGF5IHR5cGU6IEZyYXVuY2VzIChzZXJpZikuIEJvZHk6IE1hbnJvcGUuCiAqLwoKQHRoZW1lIGlubGluZSB7CiAgLS1yYWRpdXMtc206IGNhbGModmFyKC0tcmFkaXVzKSAtIDRweCk7CiAgLS1yYWRpdXMtbWQ6IGNhbGModmFyKC0tcmFkaXVzKSAtIDJweCk7CiAgLS1yYWRpdXMtbGc6IHZhcigtLXJhZGl1cyk7CiAgLS1yYWRpdXMteGw6IGNhbGModmFyKC0tcmFkaXVzKSArIDRweCk7CiAgLS1yYWRpdXMtMnhsOiBjYWxjKHZhcigtLXJhZGl1cykgKyA4cHgpOwogIC0tcmFkaXVzLTN4bDogY2FsYyh2YXIoLS1yYWRpdXMpICsgMTJweCk7CiAgLS1yYWRpdXMtNHhsOiBjYWxjKHZhcigtLXJhZGl1cykgKyAxNnB4KTsKICAtLWNvbG9yLWJhY2tncm91bmQ6IHZhcigtLWJhY2tncm91bmQpOwogIC0tY29sb3ItZm9yZWdyb3VuZDogdmFyKC0tZm9yZWdyb3VuZCk7CiAgLS1jb2xvci1jYXJkOiB2YXIoLS1jYXJkKTsKICAtLWNvbG9yLWNhcmQtZm9yZWdyb3VuZDogdmFyKC0tY2FyZC1mb3JlZ3JvdW5kKTsKICAtLWNvbG9yLXBvcG92ZXI6IHZhcigtLXBvcG92ZXIpOwogIC0tY29sb3ItcG9wb3Zlci1mb3JlZ3JvdW5kOiB2YXIoLS1wb3BvdmVyLWZvcmVncm91bmQpOwogIC0tY29sb3ItcHJpbWFyeTogdmFyKC0tcHJpbWFyeSk7CiAgLS1jb2xvci1wcmltYXJ5LWZvcmVncm91bmQ6IHZhcigtLXByaW1hcnktZm9yZWdyb3VuZCk7CiAgLS1jb2xvci1zZWNvbmRhcnk6IHZhcigtLXNlY29uZGFyeSk7CiAgLS1jb2xvci1zZWNvbmRhcnktZm9yZWdyb3VuZDogdmFyKC0tc2Vjb25kYXJ5LWZvcmVncm91bmQpOwogIC0tY29sb3ItbXV0ZWQ6IHZhcigtLW11dGVkKTsKICAtLWNvbG9yLW11dGVkLWZvcmVncm91bmQ6IHZhcigtLW11dGVkLWZvcmVncm91bmQpOwogIC0tY29sb3ItYWNjZW50OiB2YXIoLS1hY2NlbnQpOwogIC0tY29sb3ItYWNjZW50LWZvcmVncm91bmQ6IHZhcigtLWFjY2VudC1mb3JlZ3JvdW5kKTsKICAtLWNvbG9yLWRlc3RydWN0aXZlOiB2YXIoLS1kZXN0cnVjdGl2ZSk7CiAgLS1jb2xvci1kZXN0cnVjdGl2ZS1mb3JlZ3JvdW5kOiB2YXIoLS1kZXN0cnVjdGl2ZS1mb3JlZ3JvdW5kKTsKICAtLWNvbG9yLWJvcmRlcjogdmFyKC0tYm9yZGVyKTsKICAtLWNvbG9yLWlucHV0OiB2YXIoLS1pbnB1dCk7CiAgLS1jb2xvci1yaW5nOiB2YXIoLS1yaW5nKTsKCiAgLyogQWVnZWFuIFBvc3RjYXJkIHBhbGV0dGUgKi8KICAtLWNvbG9yLWFlZ2VhbjogdmFyKC0tYWVnZWFuKTsKICAtLWNvbG9yLWFlZ2Vhbi1kZWVwOiB2YXIoLS1hZWdlYW4tZGVlcCk7CiAgLS1jb2xvci1jeWNsYWRpYzogdmFyKC0tY3ljbGFkaWMpOwogIC0tY29sb3ItbGltZXN0b25lOiB2YXIoLS1saW1lc3RvbmUpOwogIC0tY29sb3ItdGVycmFjb3R0YTogdmFyKC0tdGVycmFjb3R0YSk7CiAgLS1jb2xvci1vbGl2ZTogdmFyKC0tb2xpdmUpOwogIC0tY29sb3ItaW5rOiB2YXIoLS1pbmspOwoKICAtLWZvbnQtZGlzcGxheTogIkZyYXVuY2VzIiwgR2VvcmdpYSwgc2VyaWY7CiAgLS1mb250LWJvZHk6ICJNYW5yb3BlIiwgdWktc2Fucy1zZXJpZiwgc3lzdGVtLXVpLCBzYW5zLXNlcmlmOwp9Cgo6cm9vdCB7CiAgLS1yYWRpdXM6IDAuNjI1cmVtOwogIC0tYWVnZWFuOiBva2xjaCgwLjM5NSAwLjA5IDI0NC42KTsKICAtLWFlZ2Vhbi1kZWVwOiBva2xjaCgwLjMxIDAuMDY4IDI0NC42KTsKICAtLWN5Y2xhZGljOiBva2xjaCgwLjk2NSAwLjAxMyA4Ni44KTsKICAtLWxpbWVzdG9uZTogb2tsY2goMC45MyAwLjAyNCA4NS44KTsKICAtLXRlcnJhY290dGE6IG9rbGNoKDAuNTk5IDAuMTUgMzkuMSk7CiAgLS1vbGl2ZTogb2tsY2goMC41NTYgMC4wODMgMTE3LjkpOwogIC0taW5rOiBva2xjaCgwLjI3NyAwLjAyOSAyNDAuOSk7CgogIC0tYmFja2dyb3VuZDogdmFyKC0tY3ljbGFkaWMpOwogIC0tZm9yZWdyb3VuZDogdmFyKC0taW5rKTsKICAtLWNhcmQ6IHZhcigtLWN5Y2xhZGljKTsKICAtLWNhcmQtZm9yZWdyb3VuZDogdmFyKC0taW5rKTsKICAtLXBvcG92ZXI6IHZhcigtLWN5Y2xhZGljKTsKICAtLXBvcG92ZXItZm9yZWdyb3VuZDogdmFyKC0taW5rKTsKICAtLXByaW1hcnk6IHZhcigtLWFlZ2Vhbik7CiAgLS1wcmltYXJ5LWZvcmVncm91bmQ6IHZhcigtLWN5Y2xhZGljKTsKICAtLXNlY29uZGFyeTogdmFyKC0tbGltZXN0b25lKTsKICAtLXNlY29uZGFyeS1mb3JlZ3JvdW5kOiB2YXIoLS1pbmspOwogIC0tbXV0ZWQ6IHZhcigtLWxpbWVzdG9uZSk7CiAgLS1tdXRlZC1mb3JlZ3JvdW5kOiB2YXIoLS1pbmspOwogIC0tYWNjZW50OiB2YXIoLS10ZXJyYWNvdHRhKTsKICAtLWFjY2VudC1mb3JlZ3JvdW5kOiB2YXIoLS1jeWNsYWRpYyk7CiAgLS1kZXN0cnVjdGl2ZTogb2tsY2goMC41NzcgMC4yNDUgMjcuMzI1KTsKICAtLWRlc3RydWN0aXZlLWZvcmVncm91bmQ6IG9rbGNoKDAuOTg0IDAuMDAzIDI0Ny44NTgpOwogIC0tYm9yZGVyOiBva2xjaCgwLjI3NyAwLjAyOSAyNDAuOSAvIDAuMSk7CiAgLS1pbnB1dDogb2tsY2goMC4yNzcgMC4wMjkgMjQwLjkgLyAwLjEpOwogIC0tcmluZzogdmFyKC0tYWVnZWFuKTsKfQoKQGxheWVyIGJhc2UgewogICogewogICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1jb2xvci1ib3JkZXIpOwogIH0KCiAgaHRtbCB7CiAgICBzY3JvbGwtYmVoYXZpb3I6IHNtb290aDsKICB9CgogIGJvZHkgewogICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tY29sb3ItYmFja2dyb3VuZCk7CiAgICBjb2xvcjogdmFyKC0tY29sb3ItZm9yZWdyb3VuZCk7CiAgICBmb250LWZhbWlseTogdmFyKC0tZm9udC1ib2R5KTsKICB9CgogIEBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjogcmVkdWNlKSB7CiAgICBodG1sIHsKICAgICAgc2Nyb2xsLWJlaGF2aW9yOiBhdXRvOwogICAgfQogICAgKiwKICAgICo6OmJlZm9yZSwKICAgICo6OmFmdGVyIHsKICAgICAgYW5pbWF0aW9uLWR1cmF0aW9uOiAwLjAxbXMgIWltcG9ydGFudDsKICAgICAgdHJhbnNpdGlvbi1kdXJhdGlvbjogMC4wMW1zICFpbXBvcnRhbnQ7CiAgICB9CiAgfQp9CgovKiBTbW9vdGggYWNjb3JkaW9uIGV4cGFuc2lvbiB2aWEgZ3JpZCByb3dzICovCkB1dGlsaXR5IGZhcS1wYW5lbCB7CiAgZGlzcGxheTogZ3JpZDsKICBncmlkLXRlbXBsYXRlLXJvd3M6IDBmcjsKICB0cmFuc2l0aW9uOiBncmlkLXRlbXBsYXRlLXJvd3MgMC4zNXMgY3ViaWMtYmV6aWVyKDAuMzIsIDAuNzIsIDAsIDEpOwogICYub3BlbiB7CiAgICBncmlkLXRlbXBsYXRlLXJvd3M6IDFmcjsKICB9CiAgPiBkaXYgewogICAgb3ZlcmZsb3c6IGhpZGRlbjsKICB9Cn0K
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Aegean Postcard design system.
+ * Sun-washed Cycladic whites, deep Aegean blue, terracotta and olive accents.
+ * Display type: Fraunces (serif). Body: Manrope.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+
+  /* Aegean Postcard palette */
+  --color-aegean: var(--aegean);
+  --color-aegean-deep: var(--aegean-deep);
+  --color-cycladic: var(--cycladic);
+  --color-limestone: var(--limestone);
+  --color-terracotta: var(--terracotta);
+  --color-olive: var(--olive);
+  --color-ink: var(--ink);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.625rem;
+  --aegean: oklch(0.395 0.09 244.6);
+  --aegean-deep: oklch(0.31 0.068 244.6);
+  --cycladic: oklch(0.965 0.013 86.8);
+  --limestone: oklch(0.93 0.024 85.8);
+  --terracotta: oklch(0.599 0.15 39.1);
+  --olive: oklch(0.556 0.083 117.9);
+  --ink: oklch(0.277 0.029 240.9);
+
+  --background: var(--cycladic);
+  --foreground: var(--ink);
+  --card: var(--cycladic);
+  --card-foreground: var(--ink);
+  --popover: var(--cycladic);
+  --popover-foreground: var(--ink);
+  --primary: var(--aegean);
+  --primary-foreground: var(--cycladic);
+  --secondary: var(--limestone);
+  --secondary-foreground: var(--ink);
+  --muted: var(--limestone);
+  --muted-foreground: var(--ink);
+  --accent: var(--terracotta);
+  --accent-foreground: var(--cycladic);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.277 0.029 240.9 / 0.1);
+  --input: oklch(0.277 0.029 240.9 / 0.1);
+  --ring: var(--aegean);
+  --deep: var(--ink);
+  --deep-foreground: var(--cycladic);
+}
+
+/* Dark mode: moonlit Aegean — deep navy surfaces, lighter blue and warm accents. */
+.dark {
+  --aegean: oklch(0.7 0.09 244.6);
+  --aegean-deep: oklch(0.6 0.09 244.6);
+  --cycladic: oklch(0.19 0.028 244.6);
+  --limestone: oklch(0.24 0.032 244.6);
+  --terracotta: oklch(0.72 0.14 39.1);
+  --olive: oklch(0.72 0.09 117.9);
+  --ink: oklch(0.93 0.013 86.8);
+  --deep: oklch(0.14 0.026 244.6);
+  --deep-foreground: oklch(0.93 0.013 86.8);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Smooth accordion expansion via grid rows */
+@utility faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  &.open {
+    grid-template-rows: 1fr;
+  }
+  > div {
+    overflow: hidden;
+  }
+}
