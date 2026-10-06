@@ -35,37 +35,37 @@ const NAV_LINKS = [
 const FEATURES = [
   {
     glyph: "☀",
-    tone: "bg-aegean/10 text-aegean",
+    tone: "bg-secondary/10 text-secondary",
     title: "Caldera sunsets",
     text: "Watch the sun melt into the volcano rim from a cliffside terrace, glass of Assyrtiko in hand.",
   },
   {
     glyph: "⚓",
-    tone: "bg-terracotta/10 text-terracotta",
+    tone: "bg-secondary/10 text-secondary",
     title: "Island hopping",
     text: "Ferry hops between Naxos, Milos and Paros, timed so you always land where the light is best.",
   },
   {
     glyph: "✦",
-    tone: "bg-olive/15 text-olive",
+    tone: "bg-secondary/15 text-secondary",
     title: "Slow mornings",
     text: "Lemon groves, warm bread, and coffee that takes as long as the view does. No alarms here.",
   },
   {
     glyph: "◈",
-    tone: "bg-aegean/10 text-aegean",
+    tone: "bg-secondary/10 text-secondary",
     title: "Blue-domed lanes",
     text: "Wander whitewashed alleys where every doorway opens onto another shade of the sea.",
   },
   {
     glyph: "◍",
-    tone: "bg-terracotta/10 text-terracotta",
+    tone: "bg-secondary/10 text-secondary",
     title: "Table for two",
     text: "Grilled octopus, fresh catch, and wine poured by people who know your name by day two.",
   },
   {
     glyph: "✺",
-    tone: "bg-olive/15 text-olive",
+    tone: "bg-secondary/15 text-secondary",
     title: "Hidden coves",
     text: "Swim in quiet bays most maps forget, then dry off on warm, sun-bleached stone.",
   },
@@ -103,11 +103,11 @@ function Navigation() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-cycladic/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <nav className="mx-auto max-w-6xl px-5 sm:px-8" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between">
           <a href="#home" className="flex items-center gap-2.5">
-            <span className="grid size-9 place-items-center rounded-full bg-aegean font-display text-lg font-semibold leading-none text-cycladic">
+            <span className="grid size-9 place-items-center rounded-full bg-primary font-display text-lg font-semibold leading-none text-primary-foreground">
               A
             </span>
             <span className="font-display text-lg font-semibold tracking-tight">Aegea</span>
@@ -117,7 +117,7 @@ function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-ink/70 transition-colors hover:text-aegean"
+                className="text-sm font-medium text-primary transition-colors hover:text-primary-hover"
               >
                 {link.label}
               </a>
@@ -129,31 +129,31 @@ function Navigation() {
               onClick={toggleTheme}
               aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
               title={dark ? "Switch to light mode" : "Switch to dark mode"}
-              className="grid size-10 place-items-center rounded-full ring-1 ring-ink/15 transition-colors hover:bg-limestone"
+              className="grid size-10 place-items-center rounded-full ring-1 ring-border transition-colors hover:bg-muted"
             >
               {dark ? (
-                <Sun className="size-5 text-ink/80" aria-hidden="true" />
+                <Sun className="size-5 text-foreground/80" aria-hidden="true" />
               ) : (
-                <Moon className="size-5 text-ink/80" aria-hidden="true" />
+                <Moon className="size-5 text-foreground/80" aria-hidden="true" />
               )}
             </button>
             <a
               href="#contact"
-              className="hidden items-center rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-cycladic transition-colors hover:bg-aegean sm:inline-flex"
+              className="hidden items-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:inline-flex"
             >
               Plan your trip
             </a>
             <button
               type="button"
-              className="grid size-10 place-items-center rounded-full ring-1 ring-ink/15 transition-colors hover:bg-limestone md:hidden"
+              className="grid size-10 place-items-center rounded-full ring-1 ring-border transition-colors hover:bg-muted md:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
             >
               <span className="flex flex-col gap-1.5">
-                <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
-                <span className={`block h-0.5 w-5 bg-ink transition-opacity ${open ? "opacity-0" : ""}`} />
-                <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+                <span className={`block h-0.5 w-5 bg-foreground transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
+                <span className={`block h-0.5 w-5 bg-foreground transition-opacity ${open ? "opacity-0" : ""}`} />
+                <span className={`block h-0.5 w-5 bg-foreground transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
               </span>
             </button>
           </div>
@@ -169,7 +169,7 @@ function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-2.5 text-sm font-medium text-ink/80 transition-colors hover:bg-limestone hover:text-aegean"
+                className="rounded-xl px-3 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-muted hover:text-primary-hover"
               >
                 {link.label}
               </a>
@@ -177,7 +177,7 @@ function Navigation() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-cycladic transition-colors hover:bg-aegean"
+              className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
             >
               Plan your trip
             </a>
@@ -190,31 +190,31 @@ function Navigation() {
 
 function Breadcrumbs() {
   return (
-    <nav aria-label="Breadcrumb" className="border-b border-ink/10 bg-cycladic">
+    <nav aria-label="Breadcrumb" className="border-b border-border bg-background">
       <ol className="mx-auto flex max-w-6xl items-center gap-2 px-5 py-3 text-sm sm:px-8">
         <li>
           <a
             href="#home"
-            className="font-medium text-aegean transition-colors hover:text-aegean-deep hover:underline underline-offset-4"
+            className="font-medium text-primary transition-colors hover:text-primary-hover hover:underline underline-offset-4"
           >
             Home
           </a>
         </li>
-        <li aria-hidden="true" className="text-ink/30">
+        <li aria-hidden="true" className="text-foreground/30">
           ›
         </li>
         <li>
           <a
             href="#features"
-            className="font-medium text-aegean transition-colors hover:text-aegean-deep hover:underline underline-offset-4"
+            className="font-medium text-primary transition-colors hover:text-primary-hover hover:underline underline-offset-4"
           >
             Discover
           </a>
         </li>
-        <li aria-hidden="true" className="text-ink/30">
+        <li aria-hidden="true" className="text-foreground/30">
           ›
         </li>
-        <li aria-current="page" className="font-medium text-ink/60">
+        <li aria-current="page" className="font-medium text-foreground/60">
           Greek Islands
         </li>
       </ol>
@@ -226,32 +226,32 @@ function Hero() {
   return (
     <section id="home" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute -right-24 -top-24 size-[420px] rounded-full bg-aegean/10" />
-        <div className="absolute -bottom-32 -left-20 size-[360px] rounded-full bg-terracotta/10" />
+        <div className="absolute -right-24 -top-24 size-[420px] rounded-full bg-primary/10" />
+        <div className="absolute -bottom-32 -left-20 size-[360px] rounded-full bg-primary/10" />
       </div>
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 rounded-full bg-olive/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-olive">
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-accent-foreground">
               Island to island
             </span>
             <h1 className="mt-6 max-w-[20ch] font-display text-5xl font-semibold leading-[0.95] tracking-tight text-balance sm:text-6xl lg:text-7xl">
               Greece, the way the light was meant to fall.
             </h1>
-            <p className="mt-6 max-w-[52ch] text-base text-ink/70 text-pretty sm:text-lg">
+            <p className="mt-6 max-w-[52ch] text-base text-foreground/70 text-pretty sm:text-lg">
               White-washed lanes, slow mornings over the caldera, and seas so blue they stop being a color. We plan the
               whole island-hopping journey so you only have to show up and look up.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#pricing"
-                className="inline-flex items-center rounded-full bg-aegean px-7 py-4 text-base font-semibold text-cycladic transition-all hover:-translate-y-0.5 hover:bg-aegean-deep hover:shadow-lg hover:shadow-aegean/25"
+                className="inline-flex items-center rounded-full bg-primary px-7 py-4 text-base font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/25"
               >
                 See the itineraries
               </a>
               <a
                 href="#features"
-                className="inline-flex items-center rounded-full px-7 py-4 text-base font-semibold text-ink ring-1 ring-ink/20 transition-colors hover:bg-ink hover:text-cycladic"
+                className="inline-flex items-center rounded-full px-7 py-4 text-base font-semibold text-secondary ring-1 ring-secondary/30 transition-colors hover:bg-secondary hover:text-secondary-foreground"
               >
                 How it works
               </a>
@@ -275,14 +275,14 @@ function Hero() {
 
 function Features() {
   return (
-    <section id="features" className="bg-limestone">
+    <section id="features" className="bg-muted">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="max-w-[48ch]">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta">Discover</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Discover</span>
           <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
             Six reasons the islands pull you in.
           </h2>
-          <p className="mt-4 text-base text-ink/70 text-pretty">
+          <p className="mt-4 text-base text-foreground/70 text-pretty">
             Not a checklist. A rhythm — the things that make a Greek summer feel like it was always yours.
           </p>
         </div>
@@ -290,13 +290,13 @@ function Features() {
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-[min(1.5vw,16px)] bg-cycladic p-7 ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/10"
+              className="rounded-[min(1.5vw,16px)] bg-background p-7 ring-1 ring-border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-foreground/10"
             >
               <span className={`grid size-12 place-items-center rounded-full text-2xl font-display font-semibold ${feature.tone}`} aria-hidden="true">
                 {feature.glyph}
               </span>
               <h3 className="mt-5 font-display text-xl font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm text-ink/70 text-pretty">{feature.text}</p>
+              <p className="mt-2 text-sm text-foreground/70 text-pretty">{feature.text}</p>
             </div>
           ))}
         </div>
@@ -307,21 +307,21 @@ function Features() {
 
 function CtaBanner() {
   return (
-    <section id="pricing" className="bg-aegean">
+    <section id="pricing" className="bg-secondary text-secondary-foreground">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <div className="rounded-[min(2vw,24px)] bg-aegean-deep px-8 py-14 text-center ring-1 ring-white/10 sm:px-14 sm:py-16">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-cycladic/60">
+        <div className="rounded-[min(2vw,24px)] bg-secondary px-8 py-14 text-center ring-1 ring-secondary-foreground/20 sm:px-14 sm:py-16">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/60">
             From €1,480 per person
           </span>
-          <h2 className="mx-auto mt-5 max-w-[24ch] font-display text-4xl font-semibold leading-tight tracking-tight text-cycladic text-balance sm:text-5xl">
+          <h2 className="mx-auto mt-5 max-w-[24ch] font-display text-4xl font-semibold leading-tight tracking-tight text-primary-foreground text-balance sm:text-5xl">
             One trip. Every island you've daydreamed about.
           </h2>
-          <p className="mx-auto mt-4 max-w-[46ch] text-base text-cycladic/75 text-pretty">
+          <p className="mx-auto mt-4 max-w-[46ch] text-base text-primary-foreground/75 text-pretty">
             Flights, ferries, whitewashed stays and a local guide — bundled into a single, unhurried itinerary.
           </p>
           <a
             href="#contact"
-            className="mt-8 inline-flex items-center rounded-full bg-terracotta px-8 py-4 text-base font-semibold text-cycladic transition-all hover:-translate-y-0.5 hover:bg-cycladic hover:text-aegean-deep hover:shadow-xl hover:shadow-black/20"
+            className="mt-8 inline-flex items-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-xl hover:shadow-deep/20"
           >
             Reserve your summer
           </a>
@@ -342,8 +342,8 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
       >
         <span className="font-display text-lg font-medium">{q}</span>
         <span
-          className={`grid size-8 shrink-0 place-items-center rounded-full text-ink ring-1 ring-ink/20 transition-transform duration-300 ${
-            open ? "rotate-45 bg-aegean text-cycladic ring-aegean" : ""
+          className={`grid size-8 shrink-0 place-items-center rounded-full text-foreground ring-1 ring-secondary/30 transition-transform duration-300 ${
+            open ? "rotate-45 bg-primary text-primary-foreground ring-primary" : ""
           }`}
           aria-hidden="true"
         >
@@ -352,7 +352,7 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
       </button>
       <div className={`faq-panel ${open ? "open" : ""}`}>
         <div>
-          <p className="pt-3 text-sm text-ink/70 text-pretty">{a}</p>
+          <p className="pt-3 text-sm text-foreground/70 text-pretty">{a}</p>
         </div>
       </div>
     </div>
@@ -363,15 +363,15 @@ function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="about" className="bg-cycladic">
+    <section id="about" className="bg-background">
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta">Good to know</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Good to know</span>
           <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
             Questions, answered.
           </h2>
         </div>
-        <div className="mt-12 divide-y divide-ink/10 border-y border-ink/10">
+        <div className="mt-12 divide-y divide-border border-y border-border">
           {FAQS.map((faq, i) => (
             <FaqItem
               key={faq.q}
@@ -391,34 +391,34 @@ function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section id="contact" className="bg-limestone">
+    <section id="contact" className="bg-muted">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-terracotta">Say hello</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Say hello</span>
             <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
               Tell us where you're dreaming of.
             </h2>
-            <p className="mt-4 text-base text-ink/70 text-pretty">
+            <p className="mt-4 text-base text-foreground/70 text-pretty">
               We'll reply within a day with a rough sketch of your route and a feel for the season.
             </p>
             <div className="mt-8 space-y-4 text-sm">
               <p className="flex items-center gap-3">
-                <span className="grid size-9 place-items-center rounded-full bg-aegean/10 text-aegean" aria-hidden="true">✉</span>
-                <a href="mailto:hello@aegea.travel" className="transition-colors hover:text-aegean">hello@aegea.travel</a>
+                <span className="grid size-9 place-items-center rounded-full bg-secondary/10 text-secondary" aria-hidden="true">✉</span>
+                <a href="mailto:hello@aegea.travel" className="transition-colors hover:text-primary">hello@aegea.travel</a>
               </p>
               <p className="flex items-center gap-3">
-                <span className="grid size-9 place-items-center rounded-full bg-aegean/10 text-aegean" aria-hidden="true">✆</span>
-                <a href="tel:+302286000000" className="transition-colors hover:text-aegean">+30 22860 00000</a>
+                <span className="grid size-9 place-items-center rounded-full bg-secondary/10 text-secondary" aria-hidden="true">✆</span>
+                <a href="tel:+302286000000" className="transition-colors hover:text-primary">+30 22860 00000</a>
               </p>
               <p className="flex items-center gap-3">
-                <span className="grid size-9 place-items-center rounded-full bg-aegean/10 text-aegean" aria-hidden="true">◈</span>
+                <span className="grid size-9 place-items-center rounded-full bg-secondary/10 text-secondary" aria-hidden="true">◈</span>
                 14 Harbour Lane, Fira, Santorini
               </p>
             </div>
           </div>
           <form
-            className="rounded-[min(2vw,20px)] bg-cycladic p-7 ring-1 ring-black/5 sm:p-9"
+            className="rounded-[min(2vw,20px)] bg-background p-7 ring-1 ring-border sm:p-9"
             onSubmit={(e) => {
               e.preventDefault();
               setSent(true);
@@ -426,15 +426,15 @@ function Contact() {
           >
             {sent ? (
               <div className="flex min-h-80 flex-col items-center justify-center text-center" role="status">
-                <span className="grid size-14 place-items-center rounded-full bg-olive/15 font-display text-2xl text-olive" aria-hidden="true">✓</span>
+                <span className="grid size-14 place-items-center rounded-full bg-secondary/15 font-display text-2xl text-secondary" aria-hidden="true">✓</span>
                 <h3 className="mt-5 font-display text-2xl font-semibold">Efcharistó — message sent.</h3>
-                <p className="mt-2 max-w-[36ch] text-sm text-ink/70">
+                <p className="mt-2 max-w-[36ch] text-sm text-foreground/70">
                   A travel designer will reply within a day with the first sketch of your route.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSent(false)}
-                  className="mt-6 text-sm font-semibold text-aegean underline-offset-4 hover:underline"
+                  className="mt-6 text-sm font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   Send another message
                 </button>
@@ -443,33 +443,33 @@ function Contact() {
               <>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-ink/60">Name</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Name</span>
                     <input
                       type="text"
                       name="name"
                       required
                       autoComplete="name"
-                      className="mt-1.5 w-full rounded-xl bg-limestone/60 px-4 py-3 text-sm ring-1 ring-ink/10 transition focus:outline-none focus:ring-2 focus:ring-aegean"
+                      className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="Your name"
                     />
                   </label>
                   <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-ink/60">Email</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Email</span>
                     <input
                       type="email"
                       name="email"
                       required
                       autoComplete="email"
-                      className="mt-1.5 w-full rounded-xl bg-limestone/60 px-4 py-3 text-sm ring-1 ring-ink/10 transition focus:outline-none focus:ring-2 focus:ring-aegean"
+                      className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="you@email.com"
                     />
                   </label>
                 </div>
                 <label className="mt-4 block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.1em] text-ink/60">Subject</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Subject</span>
                   <select
                     name="subject"
-                    className="mt-1.5 w-full rounded-xl bg-limestone/60 px-4 py-3 text-sm ring-1 ring-ink/10 transition focus:outline-none focus:ring-2 focus:ring-aegean"
+                    className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option>Planning a trip</option>
                     <option>Group or private route</option>
@@ -478,18 +478,18 @@ function Contact() {
                   </select>
                 </label>
                 <label className="mt-4 block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.1em] text-ink/60">Message</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Message</span>
                   <textarea
                     name="message"
                     rows={4}
                     required
-                    className="mt-1.5 w-full rounded-xl bg-limestone/60 px-4 py-3 text-sm ring-1 ring-ink/10 transition focus:outline-none focus:ring-2 focus:ring-aegean"
+                    className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Tell us about your dates and dreams..."
                   />
                 </label>
                 <button
                   type="submit"
-                  className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-aegean px-6 py-3.5 text-sm font-semibold text-cycladic transition-all hover:-translate-y-0.5 hover:bg-aegean-deep hover:shadow-lg hover:shadow-aegean/25"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/25"
                 >
                   Send the message
                 </button>
@@ -544,7 +544,7 @@ function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5">
-              <span className="grid size-9 place-items-center rounded-full bg-aegean font-display text-lg font-semibold leading-none text-cycladic">
+              <span className="grid size-9 place-items-center rounded-full bg-primary font-display text-lg font-semibold leading-none text-primary-foreground">
                 A
               </span>
               <span className="font-display text-lg font-semibold text-deep-foreground">Aegea</span>
@@ -598,17 +598,17 @@ function FloatingContactButton() {
       href="#contact"
       aria-label="Open the contact form"
       title="Call or message us"
-      className="fixed bottom-6 right-6 z-50 grid size-14 place-items-center rounded-full bg-terracotta text-cycladic shadow-lg shadow-ink/25 ring-1 ring-black/10 transition-all duration-300 hover:-translate-y-1 hover:bg-aegean-deep hover:shadow-xl hover:shadow-ink/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aegean-deep"
+      className="fixed bottom-6 right-6 z-50 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-foreground/25 ring-1 ring-border transition-all duration-300 hover:-translate-y-1 hover:bg-primary-hover hover:shadow-xl hover:shadow-foreground/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-hover"
     >
       <Phone className="size-6" aria-hidden="true" />
-      <span className="pointer-events-none absolute inset-0 -z-10 animate-ping rounded-full bg-terracotta/30 [animation-duration:2.5s]" aria-hidden="true" />
+      <span className="pointer-events-none absolute inset-0 -z-10 animate-ping rounded-full bg-primary/30 [animation-duration:2.5s]" aria-hidden="true" />
     </a>
   );
 }
 
 function Index() {
   return (
-    <div className="min-h-screen bg-cycladic font-body text-ink antialiased">
+    <div className="min-h-screen bg-background font-body text-foreground antialiased">
       <Navigation />
       <Breadcrumbs />
       <Hero />

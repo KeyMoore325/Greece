@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Aegean Postcard design system.
- * Sun-washed Cycladic whites, deep Aegean blue, terracotta and olive accents.
- * Display type: Fraunces (serif). Body: Manrope.
+ * Aegea design system.
+ * Rose actions, violet supporting elements, and restrained amber highlights.
+ * Display type: Playfair Display (serif, 700). Body: Source Sans 3.
  */
 
 @theme inline {
@@ -25,6 +25,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -49,54 +50,52 @@
   --color-olive: var(--olive);
   --color-ink: var(--ink);
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.625rem;
-  --aegean: oklch(0.395 0.09 244.6);
-  --aegean-deep: oklch(0.31 0.068 244.6);
-  --cycladic: oklch(0.965 0.013 86.8);
-  --limestone: oklch(0.93 0.024 85.8);
-  --terracotta: oklch(0.599 0.15 39.1);
-  --olive: oklch(0.556 0.083 117.9);
-  --ink: oklch(0.277 0.029 240.9);
-
-  --background: var(--cycladic);
-  --foreground: var(--ink);
-  --card: var(--cycladic);
-  --card-foreground: var(--ink);
-  --popover: var(--cycladic);
-  --popover-foreground: var(--ink);
-  --primary: var(--aegean);
-  --primary-foreground: var(--cycladic);
-  --secondary: var(--limestone);
-  --secondary-foreground: var(--ink);
-  --muted: var(--limestone);
-  --muted-foreground: var(--ink);
-  --accent: var(--terracotta);
-  --accent-foreground: var(--cycladic);
+  --background: #FFFBEB;
+  --foreground: #1C1917;
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: #E11D48;
+  --primary-hover: #BE123C;
+  --primary-foreground: #FFFFFF;
+  --secondary: #7C3AED;
+  --secondary-foreground: #FFFFFF;
+  --muted: color-mix(in srgb, var(--secondary) 5%, var(--background));
+  --muted-foreground: var(--foreground);
+  --accent: #F59E0B;
+  --accent-foreground: #1C1917;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.277 0.029 240.9 / 0.1);
-  --input: oklch(0.277 0.029 240.9 / 0.1);
-  --ring: var(--aegean);
-  --deep: var(--ink);
-  --deep-foreground: var(--cycladic);
+  --border: color-mix(in srgb, var(--secondary) 20%, transparent);
+  --input: var(--border);
+  --ring: var(--primary);
+  --deep: #1C1917;
+  --deep-foreground: #FFFBEB;
+  /* Compatibility aliases for shared layouts. */
+  --aegean: var(--primary);
+  --aegean-deep: var(--primary-hover);
+  --cycladic: var(--background);
+  --limestone: var(--muted);
+  --terracotta: var(--primary);
+  --olive: var(--secondary);
+  --ink: var(--foreground);
 }
 
-/* Dark mode: moonlit Aegean — deep navy surfaces, lighter blue and warm accents. */
+/* Dark mode retains the brand colors with readable warm-neutral surfaces. */
 .dark {
-  --aegean: oklch(0.7 0.09 244.6);
-  --aegean-deep: oklch(0.6 0.09 244.6);
-  --cycladic: oklch(0.19 0.028 244.6);
-  --limestone: oklch(0.24 0.032 244.6);
-  --terracotta: oklch(0.72 0.14 39.1);
-  --olive: oklch(0.72 0.09 117.9);
-  --ink: oklch(0.93 0.013 86.8);
-  --deep: oklch(0.14 0.026 244.6);
-  --deep-foreground: oklch(0.93 0.013 86.8);
+  --background: #1C1917;
+  --foreground: #FFFBEB;
+  --muted: #292524;
+  --border: color-mix(in srgb, var(--secondary) 45%, transparent);
+  --primary-hover: #F43F5E;
+  --deep: #0C0A09;
 }
 
 @layer base {
