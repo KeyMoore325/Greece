@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, CalendarDays, ChevronRight, Compass, Menu, Moon, Phone, Ship, Sun, Utensils, Wallet, X } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import panoramaImage from "@/assets/greece-panorama.jpg";
 import milosImage from "@/assets/milos-coast.jpg";
@@ -373,9 +374,9 @@ function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-3">
               {[
-                { label: "Instagram", glyph: "◎" },
-                { label: "Pinterest", glyph: "◉" },
-                { label: "YouTube", glyph: "▶" },
+                { label: "Facebook", icon: FaFacebookF },
+                { label: "Instagram", icon: FaInstagram },
+                { label: "TikTok", icon: FaTiktok },
               ].map((social) => (
                 <a
                   key={social.label}
@@ -383,7 +384,7 @@ function Footer() {
                   aria-label={social.label}
                   className="grid size-9 place-items-center rounded-full text-deep-foreground/70 ring-1 ring-deep-foreground/20 transition-colors hover:bg-deep-foreground hover:text-deep"
                 >
-                  {social.glyph}
+                  <social.icon className="size-3.5" />
                 </a>
               ))}
             </div>
