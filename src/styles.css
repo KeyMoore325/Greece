@@ -40,6 +40,8 @@
   --color-ring: var(--ring);
   --color-deep: var(--deep);
   --color-deep-foreground: var(--deep-foreground);
+  --color-photo-foreground: var(--photo-foreground);
+  --color-photo-overlay: var(--photo-overlay);
 
   /* Aegean Postcard palette */
   --color-aegean: var(--aegean);
@@ -78,6 +80,8 @@
   --ring: var(--primary);
   --deep: #1C1917;
   --deep-foreground: #FFFBEB;
+  --photo-foreground: #FFFBEB;
+  --photo-overlay: #1C1917;
   /* Compatibility aliases for shared layouts. */
   --aegean: var(--primary);
   --aegean-deep: var(--primary-hover);
@@ -105,12 +109,20 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .font-display {
+    font-weight: 700;
+    letter-spacing: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -124,6 +136,55 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+.page-width {
+  width: min(100% - 48px, 1120px);
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: 100px;
+}
+
+.section-space.pt-0 {
+  padding-top: 0;
+}
+
+.eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.photo-shade {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--photo-overlay) 60%, transparent), color-mix(in srgb, var(--photo-overlay) 8%, transparent));
+}
+
+.photo-bottom-shade {
+  background: linear-gradient(0deg, color-mix(in srgb, var(--photo-overlay) 85%, transparent), transparent 65%);
+}
+
+.gallery-photo {
+  animation: gallery-reveal 450ms ease-out;
+}
+
+@keyframes gallery-reveal {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 639px) {
+  .section-space { padding-block: 64px; }
+  .section-heading { font-size: 32px; }
+  .page-width { width: calc(100% - 40px); }
 }
 
 /* Smooth accordion expansion via grid rows */

@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Moon, Phone, Sun } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, ChevronRight, Compass, Menu, Moon, Phone, Ship, Sun, Utensils, Wallet, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import panoramaImage from "@/assets/greece-panorama.jpg";
+import milosImage from "@/assets/milos-coast.jpg";
+import parosImage from "@/assets/paros-lanes.jpg";
+import tableImage from "@/assets/greek-table.jpg";
 import heroImage from "@/assets/hero-santorini.jpg";
 
 export const Route = createFileRoute("/")({
@@ -33,42 +38,15 @@ const NAV_LINKS = [
 ];
 
 const FEATURES = [
-  {
-    glyph: "☀",
-    tone: "bg-secondary/10 text-secondary",
-    title: "Caldera sunsets",
-    text: "Watch the sun melt into the volcano rim from a cliffside terrace, glass of Assyrtiko in hand.",
-  },
-  {
-    glyph: "⚓",
-    tone: "bg-secondary/10 text-secondary",
-    title: "Island hopping",
-    text: "Ferry hops between Naxos, Milos and Paros, timed so you always land where the light is best.",
-  },
-  {
-    glyph: "✦",
-    tone: "bg-secondary/15 text-secondary",
-    title: "Slow mornings",
-    text: "Lemon groves, warm bread, and coffee that takes as long as the view does. No alarms here.",
-  },
-  {
-    glyph: "◈",
-    tone: "bg-secondary/10 text-secondary",
-    title: "Blue-domed lanes",
-    text: "Wander whitewashed alleys where every doorway opens onto another shade of the sea.",
-  },
-  {
-    glyph: "◍",
-    tone: "bg-secondary/10 text-secondary",
-    title: "Table for two",
-    text: "Grilled octopus, fresh catch, and wine poured by people who know your name by day two.",
-  },
-  {
-    glyph: "✺",
-    tone: "bg-secondary/15 text-secondary",
-    title: "Hidden coves",
-    text: "Swim in quiet bays most maps forget, then dry off on warm, sun-bleached stone.",
-  },
+  { icon: Sun, title: "Caldera sunsets", text: "Golden light, cliffside terraces, and a glass of Assyrtiko. Some evenings stay with you forever.", tone: "bg-accent/10", number: "01" },
+  { icon: Ship, title: "Island to island", text: "From Naxos to Milos to Paros. Follow the ferries to a different kind of beautiful.", tone: "bg-secondary/5", number: "02" },
+  { icon: Utensils, title: "A taste of Greece", text: "Long lunches, the freshest catch, and a table by the sea. There's always room for one more.", tone: "bg-primary/5", number: "03" },
+];
+
+const GALLERY = [
+  { image: panoramaImage, title: "Santorini", detail: "Where the light meets the sea", alt: "Santorini's blue domes and whitewashed village above the sea" },
+  { image: milosImage, title: "Milos", detail: "A coastline from another world", alt: "White volcanic cliffs and turquoise water at Sarakiniko, Milos" },
+  { image: parosImage, title: "Paros", detail: "Take the beautiful way around", alt: "A flower-filled whitewashed alley on Paros" },
 ];
 
 const FAQS = [
@@ -86,257 +64,98 @@ const FAQS = [
   },
 ];
 
+function TripLink({ children, href = "#contact", outline = false }: { children: React.ReactNode; href?: string; outline?: boolean }) {
+  return <Button asChild variant={outline ? "outline" : "default"} className={`h-11 rounded-full px-6 font-normal shadow-none ${outline ? "border-secondary/30 bg-transparent text-primary hover:bg-secondary/10" : "hover:bg-primary-hover"}`}><a href={href}>{children}</a></Button>;
+}
+
 function Navigation() {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("aegea-theme");
-    setDark(stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
-  }, []);
-
+  useEffect(() => { setDark(document.documentElement.classList.contains("dark")); }, []);
   const toggleTheme = () => {
     const next = !dark;
     setDark(next);
-    localStorage.setItem("aegea-theme", next ? "dark" : "light");
     document.documentElement.classList.toggle("dark", next);
+    try { localStorage.setItem("aegea-theme", next ? "dark" : "light"); } catch { /* Theme still works when storage is unavailable. */ }
   };
-
-  return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-      <nav className="mx-auto max-w-6xl px-5 sm:px-8" aria-label="Main navigation">
-        <div className="flex h-16 items-center justify-between">
-          <a href="#home" className="flex items-center gap-2.5">
-            <span className="grid size-9 place-items-center rounded-full bg-primary font-display text-lg font-semibold leading-none text-primary-foreground">
-              A
-            </span>
-            <span className="font-display text-lg font-semibold tracking-tight">Aegea</span>
-          </a>
-          <nav className="hidden items-center gap-8 md:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-primary transition-colors hover:text-primary-hover"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={toggleTheme}
-              aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-              title={dark ? "Switch to light mode" : "Switch to dark mode"}
-              className="grid size-10 place-items-center rounded-full ring-1 ring-border transition-colors hover:bg-muted"
-            >
-              {dark ? (
-                <Sun className="size-5 text-foreground/80" aria-hidden="true" />
-              ) : (
-                <Moon className="size-5 text-foreground/80" aria-hidden="true" />
-              )}
-            </button>
-            <a
-              href="#contact"
-              className="hidden items-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover sm:inline-flex"
-            >
-              Plan your trip
-            </a>
-            <button
-              type="button"
-              className="grid size-10 place-items-center rounded-full ring-1 ring-border transition-colors hover:bg-muted md:hidden"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
-            >
-              <span className="flex flex-col gap-1.5">
-                <span className={`block h-0.5 w-5 bg-foreground transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
-                <span className={`block h-0.5 w-5 bg-foreground transition-opacity ${open ? "opacity-0" : ""}`} />
-                <span className={`block h-0.5 w-5 bg-foreground transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
-              </span>
-            </button>
-          </div>
+  return <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+    <nav className="page-width" aria-label="Main navigation">
+      <div className="grid h-[72px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
+        <a href="#home" className="min-w-0 font-display text-2xl text-primary">Aegea<span className="ml-1 text-sm">®</span></a>
+        <div className="hidden items-center gap-8 md:flex">{NAV_LINKS.map(link => <a key={link.href} href={link.href} className="text-sm text-primary transition-colors hover:text-primary-hover">{link.label}</a>)}</div>
+        <div className="flex shrink-0 items-center justify-end gap-3">
+          <Button variant="ghost" size="icon" className="rounded-full hover:bg-secondary/10" onClick={toggleTheme} aria-label={dark ? "Switch to light mode" : "Switch to dark mode"} title={dark ? "Switch to light mode" : "Switch to dark mode"}>{dark ? <Sun /> : <Moon />}</Button>
+          <div className="hidden sm:block"><TripLink>Plan your trip <ArrowRight /></TripLink></div>
+          <Button variant="ghost" size="icon" className="md:hidden" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
         </div>
-        <div
-          className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out md:hidden ${
-            open ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <nav className="flex flex-col gap-1 pb-4" aria-label="Mobile navigation">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-muted hover:text-primary-hover"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
-            >
-              Plan your trip
-            </a>
-          </nav>
-        </div>
-      </nav>
-    </header>
-  );
+      </div>
+      {open && <div className="flex flex-col gap-4 border-t border-border py-5 md:hidden">{NAV_LINKS.map(link => <a href={link.href} key={link.href} onClick={() => setOpen(false)} className="text-primary">{link.label}</a>)}<TripLink>Plan your trip</TripLink></div>}
+    </nav>
+  </header>;
 }
 
 function Breadcrumbs() {
-  return (
-    <nav aria-label="Breadcrumb" className="border-b border-border bg-background">
-      <ol className="mx-auto flex max-w-6xl items-center gap-2 px-5 py-3 text-sm sm:px-8">
-        <li>
-          <a
-            href="#home"
-            className="font-medium text-primary transition-colors hover:text-primary-hover hover:underline underline-offset-4"
-          >
-            Home
-          </a>
-        </li>
-        <li aria-hidden="true" className="text-foreground/30">
-          ›
-        </li>
-        <li>
-          <a
-            href="#features"
-            className="font-medium text-primary transition-colors hover:text-primary-hover hover:underline underline-offset-4"
-          >
-            Discover
-          </a>
-        </li>
-        <li aria-hidden="true" className="text-foreground/30">
-          ›
-        </li>
-        <li aria-current="page" className="font-medium text-foreground/60">
-          Greek Islands
-        </li>
-      </ol>
-    </nav>
-  );
+  return <nav aria-label="Breadcrumb" className="mb-5"><ol className="flex items-center gap-2 text-xs text-photo-foreground/80"><li><a href="#home" className="hover:underline">Home</a></li><ChevronRight className="size-3" aria-hidden="true"/><li><a href="#features" className="hover:underline">Discover</a></li><ChevronRight className="size-3" aria-hidden="true"/><li aria-current="page">Greek Islands</li></ol></nav>;
 }
 
 function Hero() {
-  return (
-    <section id="home" className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute -right-24 -top-24 size-[420px] rounded-full bg-primary/10" />
-        <div className="absolute -bottom-32 -left-20 size-[360px] rounded-full bg-primary/10" />
-      </div>
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-accent-foreground">
-              Island to island
-            </span>
-            <h1 className="mt-6 max-w-[20ch] font-display text-5xl font-semibold leading-[0.95] tracking-tight text-balance sm:text-6xl lg:text-7xl">
-              Greece, the way the light was meant to fall.
-            </h1>
-            <p className="mt-6 max-w-[52ch] text-base text-foreground/70 text-pretty sm:text-lg">
-              White-washed lanes, slow mornings over the caldera, and seas so blue they stop being a color. We plan the
-              whole island-hopping journey so you only have to show up and look up.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href="#pricing"
-                className="inline-flex items-center rounded-full bg-primary px-7 py-4 text-base font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/25"
-              >
-                See the itineraries
-              </a>
-              <a
-                href="#features"
-                className="inline-flex items-center rounded-full px-7 py-4 text-base font-semibold text-secondary ring-1 ring-secondary/30 transition-colors hover:bg-secondary hover:text-secondary-foreground"
-              >
-                How it works
-              </a>
-            </div>
-          </div>
-          <div className="lg:col-span-5">
-            <img
-              src={heroImage}
-              alt="Santorini white Cycladic buildings cascading down a cliff toward the Aegean sea at golden hour"
-              width={1024}
-              height={1280}
-              className="aspect-[4/5] w-full rounded-[min(1vw,12px)] object-cover"
-              fetchPriority="high"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="home" className="relative isolate flex min-h-[590px] items-center overflow-hidden text-photo-foreground">
+    <img src={panoramaImage} alt="Blue domes overlooking the Aegean sea in Santorini at sunset" width={1920} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 size-full object-cover" />
+    <div className="photo-shade absolute inset-0 -z-10" />
+    <div className="page-width w-full py-14 sm:py-16">
+      <Breadcrumbs />
+      <h1 className="max-w-[16ch] text-balance font-display text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">Greece, the way the light was meant to fall.<span className="ml-3 inline-block align-top font-body text-base font-normal sm:text-xl">GR</span></h1>
+      <p className="mt-6 max-w-[46ch] text-pretty text-base leading-relaxed text-photo-foreground/90">White-washed lanes, slow mornings over the caldera, and seas so blue they stop being a color. We plan the whole island-hopping journey so you only have to show up and look up.</p>
+      <div className="mt-8 flex flex-wrap gap-4"><TripLink href="#gallery">Explore the islands <ArrowRight /></TripLink><Button asChild variant="link" className="h-11 font-normal text-photo-foreground"><a href="#features">Discover more</a></Button></div>
+    </div>
+  </section>;
 }
 
 function Features() {
-  return (
-    <section id="features" className="bg-muted">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <div className="max-w-[48ch]">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Discover</span>
-          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
-            Six reasons the islands pull you in.
-          </h2>
-          <p className="mt-4 text-base text-foreground/70 text-pretty">
-            Not a checklist. A rhythm — the things that make a Greek summer feel like it was always yours.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((feature) => (
-            <div
-              key={feature.title}
-              className="rounded-[min(1.5vw,16px)] bg-background p-7 ring-1 ring-border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-foreground/10"
-            >
-              <span className={`grid size-12 place-items-center rounded-full text-2xl font-display font-semibold ${feature.tone}`} aria-hidden="true">
-                {feature.glyph}
-              </span>
-              <h3 className="mt-5 font-display text-xl font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm text-foreground/70 text-pretty">{feature.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="features" className="section-space"><div className="page-width">
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4"><div className="min-w-0"><p className="eyebrow">Discover</p><h2 className="section-heading mt-4 max-w-[450px]">What's so special<br />about Greece?</h2></div><div className="hidden sm:block"><TripLink href="#experiences">A little inspiration <ArrowRight /></TripLink></div></div>
+    <div className="mt-10 grid gap-5 md:grid-cols-3">{FEATURES.map(feature => <article key={feature.title} className={`relative rounded-lg p-7 transition-transform duration-300 hover:-translate-y-1 ${feature.tone}`}><span className="absolute right-6 top-6 font-display text-3xl text-foreground/10">{feature.number}</span><span className="grid size-10 place-items-center rounded-full bg-secondary text-secondary-foreground"><feature.icon className="size-4" /></span><h3 className="mt-7 font-display text-xl">{feature.title}</h3><p className="mt-3 max-w-[34ch] text-sm leading-relaxed text-foreground/70">{feature.text}</p></article>)}</div>
+  </div></section>;
+}
+
+function Gallery() {
+  const [current, setCurrent] = useState(0);
+  const slide = GALLERY[current] ?? GALLERY[0]!;
+  return <section id="gallery" className="section-space pt-0"><div className="page-width">
+    <div className="mb-9 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4"><div className="min-w-0"><p className="eyebrow">Gallery</p><h2 className="section-heading mt-4">Explore the beauty</h2></div><div className="flex shrink-0 gap-2"><Button variant="ghost" size="icon" className="rounded-full" aria-label="Previous island" onClick={() => setCurrent((current + GALLERY.length - 1) % GALLERY.length)}><ArrowLeft /></Button><Button size="icon" className="rounded-full" aria-label="Next island" onClick={() => setCurrent((current + 1) % GALLERY.length)}><ArrowRight /></Button></div></div>
+    <div className="relative isolate h-[360px] overflow-hidden rounded-lg sm:h-[390px]" aria-roledescription="carousel" aria-label="Greek island gallery">
+      <img key={slide.title} src={slide.image} alt={slide.alt} width={1920} height={1024} loading="lazy" className="gallery-photo absolute inset-0 -z-20 size-full object-cover"/><div className="photo-bottom-shade absolute inset-0 -z-10"/>
+      <div className="absolute bottom-7 left-7 right-7 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 text-photo-foreground"><div aria-live="polite"><p className="text-xs">{slide.detail}</p><h3 className="mt-2 font-display text-3xl">{slide.title}</h3></div><div className="flex gap-2">{GALLERY.map((item, i) => <Button key={item.title} variant="ghost" className="h-6 w-6 p-0 hover:bg-transparent" aria-label={`Show ${item.title}`} aria-pressed={current === i} onClick={() => setCurrent(i)}><span className={`h-1 rounded-full bg-photo-foreground ${current === i ? "w-6" : "w-2 opacity-50"}`} /></Button>)}</div></div>
+    </div>
+  </div></section>;
+}
+
+function Experiences() {
+  const experiences = [
+    { image: heroImage, title: "Caldera sunsets", text: "Clifftop views and the kind of golden hour you'll never forget.", link: "Find your Santorini", alt: "Santorini village at golden hour" },
+    { image: parosImage, title: "Whitewashed wanderings", text: "Flower-filled lanes, blue doors, and nowhere you need to be.", link: "Get lost in Paros", alt: "Whitewashed Paros alley with pink bougainvillea" },
+    { image: tableImage, title: "A seat by the sea", text: "Fresh catch, local wine, and lunches that last all afternoon.", link: "Taste the islands", alt: "Greek food and wine at a seaside taverna" },
+  ];
+  return <section id="experiences" className="section-space bg-muted/60"><div className="page-width"><div className="grid gap-5 md:grid-cols-2 md:items-end"><div><p className="eyebrow">Must experience</p><h2 className="section-heading mt-4">Icons of Greece</h2></div><p className="max-w-[360px] text-sm leading-relaxed text-foreground/65 md:justify-self-end">The little things that make a place unforgettable. Come for the views. Stay for everything else.</p></div>
+    <div className="mt-10 grid gap-8 md:grid-cols-3">{experiences.map(item => <article key={item.title} className="group min-w-0"><div className="relative isolate aspect-[3/4] overflow-hidden rounded-lg"><img src={item.image} alt={item.alt} width={1024} height={1280} loading="lazy" className="absolute inset-0 -z-20 size-full object-cover transition-transform duration-500 group-hover:scale-105"/><div className="photo-bottom-shade absolute inset-0 -z-10"/><div className="absolute bottom-0 p-6 text-photo-foreground"><h3 className="font-display text-xl">{item.title}</h3><p className="mt-2 text-sm leading-relaxed text-photo-foreground/85">{item.text}</p></div></div><div className="mt-5 text-center"><TripLink outline>{item.link} <ArrowRight /></TripLink></div></article>)}</div>
+  </div></section>;
+}
+
+function Planning() {
+  const items = [ {icon: Compass, label:"Your route", value:"Three islands. One beautiful journey."}, {icon: Wallet, label:"Your budget", value:"From €1,480 per person"}, {icon: CalendarDays, label:"Best time", value:"Late May–June & September"}, {icon: Ship, label:"Getting around", value:"Flights, ferries & transfers included"} ];
+  return <section id="pricing" className="section-space"><div className="page-width"><p className="eyebrow">Before you go</p><h2 className="section-heading mt-4">Plan your trip</h2><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{items.map(item => <div key={item.label} className="border-t border-secondary/25 py-6"><span className="grid size-9 place-items-center rounded-full bg-secondary/10 text-secondary"><item.icon className="size-4"/></span><p className="mt-5 text-xs uppercase text-foreground/50">{item.label}</p><p className="mt-2 text-sm">{item.value}</p></div>)}</div></div></section>;
 }
 
 function CtaBanner() {
-  return (
-    <section id="pricing" className="bg-secondary text-secondary-foreground">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <div className="rounded-[min(2vw,24px)] bg-secondary px-8 py-14 text-center ring-1 ring-secondary-foreground/20 sm:px-14 sm:py-16">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/60">
-            From €1,480 per person
-          </span>
-          <h2 className="mx-auto mt-5 max-w-[24ch] font-display text-4xl font-semibold leading-tight tracking-tight text-primary-foreground text-balance sm:text-5xl">
-            One trip. Every island you've daydreamed about.
-          </h2>
-          <p className="mx-auto mt-4 max-w-[46ch] text-base text-primary-foreground/75 text-pretty">
-            Flights, ferries, whitewashed stays and a local guide — bundled into a single, unhurried itinerary.
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-flex items-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-xl hover:shadow-deep/20"
-          >
-            Reserve your summer
-          </a>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="relative isolate overflow-hidden text-photo-foreground"><img src={panoramaImage} alt="Sunset over the Aegean sea" width={1920} height={1024} loading="lazy" className="absolute inset-0 -z-20 size-full object-cover"/><div className="absolute inset-0 -z-10 bg-photo-overlay/75"/><div className="page-width grid gap-8 py-20 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"><h2 className="max-w-[540px] font-display text-3xl leading-tight sm:text-4xl">Pack your bags, your<br />adventure awaits!</h2><TripLink>Reserve your summer <ArrowRight /></TripLink></div></section>;
 }
 
 function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
   return (
     <div className="py-5">
-      <button
+      <Button
         type="button"
-        className="flex w-full items-center justify-between gap-4 text-left"
+        variant="ghost" className="h-auto w-full justify-between gap-4 whitespace-normal rounded-none p-0 text-left hover:bg-transparent"
         aria-expanded={open}
         onClick={onToggle}
       >
@@ -349,7 +168,7 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
         >
           +
         </span>
-      </button>
+      </Button>
       <div className={`faq-panel ${open ? "open" : ""}`}>
         <div>
           <p className="pt-3 text-sm text-foreground/70 text-pretty">{a}</p>
@@ -366,8 +185,8 @@ function Faq() {
     <section id="about" className="bg-background">
       <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Good to know</span>
-          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
+          <span className="text-xs font-normal uppercase  text-primary">Good to know</span>
+          <h2 className="mt-4 section-heading text-balance">
             Questions, answered.
           </h2>
         </div>
@@ -391,12 +210,12 @@ function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section id="contact" className="bg-muted">
+    <section id="contact" className="bg-muted/50">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Say hello</span>
-            <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
+            <span className="text-xs font-normal uppercase  text-primary">Say hello</span>
+            <h2 className="mt-4 section-heading text-balance">
               Tell us where you're dreaming of.
             </h2>
             <p className="mt-4 text-base text-foreground/70 text-pretty">
@@ -418,7 +237,7 @@ function Contact() {
             </div>
           </div>
           <form
-            className="rounded-[min(2vw,20px)] bg-background p-7 ring-1 ring-border sm:p-9"
+            className="border-t border-secondary/25 pt-8"
             onSubmit={(e) => {
               e.preventDefault();
               setSent(true);
@@ -427,49 +246,49 @@ function Contact() {
             {sent ? (
               <div className="flex min-h-80 flex-col items-center justify-center text-center" role="status">
                 <span className="grid size-14 place-items-center rounded-full bg-secondary/15 font-display text-2xl text-secondary" aria-hidden="true">✓</span>
-                <h3 className="mt-5 font-display text-2xl font-semibold">Efcharistó — message sent.</h3>
+                <h3 className="mt-5 font-display text-2xl font-normal">Efcharistó — message sent.</h3>
                 <p className="mt-2 max-w-[36ch] text-sm text-foreground/70">
                   A travel designer will reply within a day with the first sketch of your route.
                 </p>
-                <button
+                <Button
                   type="button"
                   onClick={() => setSent(false)}
-                  className="mt-6 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                  variant="link" className="mt-6 text-sm text-primary"
                 >
                   Send another message
-                </button>
+                </Button>
               </div>
             ) : (
               <>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Name</span>
+                    <span className="text-xs font-normal uppercase  text-foreground/60">Name</span>
                     <input
                       type="text"
                       name="name"
                       required
                       autoComplete="name"
-                      className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="mt-1.5 w-full rounded-md bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="Your name"
                     />
                   </label>
                   <label className="block">
-                    <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Email</span>
+                    <span className="text-xs font-normal uppercase  text-foreground/60">Email</span>
                     <input
                       type="email"
                       name="email"
                       required
                       autoComplete="email"
-                      className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="mt-1.5 w-full rounded-md bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="you@email.com"
                     />
                   </label>
                 </div>
                 <label className="mt-4 block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Subject</span>
+                  <span className="text-xs font-normal uppercase  text-foreground/60">Subject</span>
                   <select
                     name="subject"
-                    className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="mt-1.5 w-full rounded-md bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option>Planning a trip</option>
                     <option>Group or private route</option>
@@ -478,21 +297,21 @@ function Contact() {
                   </select>
                 </label>
                 <label className="mt-4 block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/60">Message</span>
+                  <span className="text-xs font-normal uppercase  text-foreground/60">Message</span>
                   <textarea
                     name="message"
                     rows={4}
                     required
-                    className="mt-1.5 w-full rounded-xl bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="mt-1.5 w-full rounded-md bg-muted/60 px-4 py-3 text-sm ring-1 ring-border transition focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Tell us about your dates and dreams..."
                   />
                 </label>
-                <button
+                <Button
                   type="submit"
-                  className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/25"
+                  className="mt-6 h-12 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3.5 text-sm font-normal text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/25"
                 >
                   Send the message
-                </button>
+                </Button>
               </>
             )}
           </form>
@@ -544,10 +363,10 @@ function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5">
-              <span className="grid size-9 place-items-center rounded-full bg-primary font-display text-lg font-semibold leading-none text-primary-foreground">
+              <span className="grid size-9 place-items-center rounded-full bg-primary font-display text-lg font-normal leading-none text-primary-foreground">
                 A
               </span>
-              <span className="font-display text-lg font-semibold text-deep-foreground">Aegea</span>
+              <span className="font-display text-lg font-normal text-deep-foreground">Aegea</span>
             </div>
             <p className="mt-4 max-w-[34ch] text-sm text-pretty">
               Island-hopping journeys across the Aegean, planned end to end.
@@ -571,7 +390,7 @@ function Footer() {
           </div>
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.heading}>
-              <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-deep-foreground/50">{column.heading}</h2>
+              <h2 className="text-xs font-normal uppercase  text-deep-foreground/50">{column.heading}</h2>
               <ul className="mt-4 space-y-2.5 text-sm">
                 {column.links.map((link) => (
                   <li key={link.label}>
@@ -610,12 +429,16 @@ function Index() {
   return (
     <div className="min-h-screen bg-background font-body text-foreground antialiased">
       <Navigation />
-      <Breadcrumbs />
+      <main>
       <Hero />
       <Features />
-      <CtaBanner />
+      <Gallery />
+      <Experiences />
+      <Planning />
       <Faq />
       <Contact />
+      <CtaBanner />
+      </main>
       <Footer />
       <FloatingContactButton />
     </div>
